@@ -1,0 +1,31 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#define N 100
+/*Scrivere un programma che stampi in ordine inverso una sequenza di N numeri inseriti dall’utente. Il
+numero N viene inserito dall’utente ed è minore di 100.*/
+
+
+int main() {
+	
+	int n[N];
+	int nn;
+	int i;
+
+	printf("quanti numeri vuoi stampare?\n");
+	scanf("%d", &nn);
+
+	for (i = 0; i < N && i<nn; i++) {
+
+		printf("inserisci l'elemento di indice %d\n", i);
+		scanf("%d", &n[i]);
+		
+	}
+
+	for (i = nn-1; i >= 0; i--) {
+		printf("%d ", n[i]);
+	}
+	
+
+	
+
+}
