@@ -29,12 +29,12 @@ int main(void) {
 
 	//controllo apertura file
 	if ((fPunti = fopen(nomeFile, "r")) == NULL) {
-		printf("Errore nell'apertura del file: %s",nomeFile);
+		printf("Errore nell'apertura del file: %s", nomeFile);
 		exit(1);
 	}
 
 	//lettura dal file(termina quando legge 10 numeri o a fine file)
-	while (!feof(fPunti) && i<N) {
+	while (!feof(fPunti) && i < N) {
 
 		fscanf(fPunti, "%f%f", &ascissa, &ordinata);
 		if (ascissa > 0) {
@@ -42,7 +42,7 @@ int main(void) {
 			vet[i].y = ordinata;
 			i++;
 			c++;
- 		}
+		}
 	}
 	fclose(fPunti);
 
@@ -54,14 +54,14 @@ int main(void) {
 	}
 
 	//calcolo della distanza
-	for (i = 0; i < c; i++) {
+	for (i = 1; i < c; i++) {
 
-		distanza += sqrt((vet[i].x * vet[i].x) + (vet[i].y * vet[i].y));
+		distanza += sqrt((vet[i - 1].x - vet[i].x) * (vet[i - 1].x - vet[i].x) + (vet[i - 1].y - vet[i].y) * (vet[i - 1].y - vet[i].y));
 
 	}
 
 	//ricerca del massimo e minimo direttamente in un unico ciclo
-	punto min = vet[0], max = vet[0]; 
+	punto min = vet[0], max = vet[0];
 	for (i = 1; i < c; i++) {
 
 		if (vet[i].x > max.x) {
@@ -93,5 +93,7 @@ int main(void) {
 		fprintf(fPunti, "%.1f\n", vet[i].x);
 	}
 	fclose(fPunti);
+
+
 
 }
